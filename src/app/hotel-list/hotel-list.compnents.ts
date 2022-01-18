@@ -22,14 +22,24 @@ export class HotelListComponent  implements OnInit{
 
   public receiveRating : string | undefined;
 
+  public errMsg: string | undefined;
+
+
   constructor(private hotelListService: HotelListService) {
 
   }
 
   ngOnInit(): void {
-    this.hotels = this.hotelListService.getHotels().subscribe();
-      this.filteredHotels = this.hotels;
-      this.hotelFilter = '';
+    // this.hotels = this.hotelListService.getHotels();
+    this.hotelListService.getHotels().subscribe({
+      next: hotels => {
+        this.hotels = hotels,
+        this.filteredHotels = this.hotels;
+      },
+      error: err => this.errMsg = err
+    });
+
+    this.hotelFilter = '';
   }
 
   public toggleIsNowBadge(): void {
