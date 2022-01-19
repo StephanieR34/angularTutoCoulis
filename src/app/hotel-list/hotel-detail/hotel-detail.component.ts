@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IHotel } from '../hotel';
 import { HotelListService } from '../hotel-list.service';
 
@@ -15,7 +15,9 @@ export class HotelDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
 
-    private hotelService: HotelListService
+    private hotelService: HotelListService,
+    private router: Router
+
   ) { }
 
   ngOnInit(): void {
@@ -28,6 +30,10 @@ export class HotelDetailComponent implements OnInit {
     })
 
 
+  }
+
+  public backToList(): void {
+    this.router.navigate(['/hotels'])
   }
 
 }
