@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { listenerCount } from "process";
 import { IHotel } from './hotel'
 import { HotelListService } from "./hotel-list.service";
 
@@ -27,9 +28,10 @@ export class HotelListComponent  implements OnInit{
   }
 
   ngOnInit(): void {
-    this.hotels = this.hotelListService.getHotels().subscribe();
-      this.filteredHotels = this.hotels;
-      this.hotelFilter = '';
+    // this.hotels = this.hotelListService.getHotels();
+    //   this.filteredHotels = this.hotels;
+    //   this.hotelFilter = '';
+    this.hotelListService.getHotels().subscribe((result ) => {this.hotels = result})
   }
 
   public toggleIsNowBadge(): void {

@@ -11,7 +11,7 @@ import { Observable } from "rxjs";
 
 export class HotelListService {
 
-  private readonly HOTEL_API_URL =`api/json`;
+  private readonly HOTEL_API_URL =`api/hotels.json`;
 
   constructor(private http: HttpClient) {
 
